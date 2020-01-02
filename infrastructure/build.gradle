@@ -1,0 +1,15 @@
+plugins {
+    id "application"
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation rootProject.ext.kotlinJvm
+    implementation rootProject.ext.coroutine
+    implementation rootProject.ext.ktorServer
+    implementation rootProject.ext.ktorSerialization
+    implementation rootProject.ext.logbackClassic
+    testImplementation rootProject.ext.ktorServerTest
+}
+
+mainClassName = 'io.ktor.server.netty.EngineMain'

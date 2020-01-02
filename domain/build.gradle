@@ -1,0 +1,9 @@
+plugins {
+    id 'kotlinx-serialization'
+}
+
+dependencies {
+    implementation rootProject.ext.kotlinJvm
+    implementation rootProject.ext.coroutine
+    implementation rootProject.ext.serialization
+}

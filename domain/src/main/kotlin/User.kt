@@ -1,5 +1,3 @@
-package com.stanfit
-
 import kotlinx.serialization.Serializable
 
 @Serializable

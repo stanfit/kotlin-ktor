@@ -1,5 +1,3 @@
-package com.stanfit
-
 import io.ktor.application.call
 import io.ktor.request.receive
 import io.ktor.response.respond

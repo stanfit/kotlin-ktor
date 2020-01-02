@@ -1,5 +1,3 @@
-package com.stanfit
-
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
