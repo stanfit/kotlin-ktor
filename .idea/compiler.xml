@@ -3,6 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
       <module name="web-ktor.main" target="12" />
+      <module name="web-ktor.service.main" target="1.8" />
+      <module name="web-ktor.service.test" target="1.8" />
       <module name="web-ktor.test" target="12" />
     </bytecodeTargetLevel>
   </component>

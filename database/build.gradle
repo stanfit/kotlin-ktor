@@ -3,7 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation project(':infrastructure')
     implementation project(':domain')
     implementation rootProject.ext.kotlinJvm
     implementation rootProject.ext.coroutine

@@ -2,6 +2,8 @@ import io.ktor.application.call
 import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.*
+import kotlin.collections.first
+import kotlin.text.toInt
 
 fun Route.UserController() {
     route("users") {

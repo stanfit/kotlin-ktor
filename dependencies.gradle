@@ -16,8 +16,13 @@ ext {
     // Ktor
     ktor_version = "1.2.6"
     ktorServer = "io.ktor:ktor-server-netty:$ktor_version"
+    ktorLocations = "io.ktor:ktor-locations:$ktor_version"
     ktorServerTest = "io.ktor:ktor-server-tests:$ktor_version"
     ktorSerialization = "io.ktor:ktor-serialization:$ktor_version"
+
+    // Koin
+    koin_version = "2.1.0-alpha-8"
+    koinKtor = "org.koin:koin-ktor:$koin_version"
 
     // Logback
     logback_version = "1.2.1"
