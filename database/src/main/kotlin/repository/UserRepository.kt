@@ -37,7 +37,7 @@ class UserRepository : UserRepositoryAdapter {
 
     private fun Query.users(): List<User> = map {
         User(
-            id = it[Users.id],
+            id = it[Users.id].value,
             name = it[Users.name]
         )
     }

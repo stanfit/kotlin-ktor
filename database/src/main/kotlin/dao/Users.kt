@@ -1,8 +1,7 @@
 package dao
 
-import org.jetbrains.exposed.sql.Table
+import org.jetbrains.exposed.dao.id.IntIdTable
 
-object Users : Table("users") {
-    val id = integer("id").autoIncrement().primaryKey()
+object Users : IntIdTable("users") {
     val name = varchar("name", 50)
 }
