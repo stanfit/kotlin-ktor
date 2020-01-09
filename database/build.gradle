@@ -1,5 +1,5 @@
 plugins {
-
+    id 'org.flywaydb.flyway'
 }
 
 dependencies {
@@ -10,4 +10,10 @@ dependencies {
     implementation rootProject.ext.exposedDao
     implementation rootProject.ext.exposedJdbc
     implementation rootProject.ext.h2
+}
+
+flyway {
+    user = 'sa'
+    //url = 'jdbc:h2:./dummy' // Embedded
+    url = 'jdbc:h2:mem:test' // c/s
 }
