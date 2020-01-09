@@ -1,26 +1,44 @@
 import io.ktor.application.call
-import io.ktor.request.receive
+import io.ktor.http.HttpStatusCode
 import io.ktor.response.respond
+import io.ktor.response.respondText
 import io.ktor.routing.*
-import kotlin.collections.first
-import kotlin.text.toInt
 
-fun Route.UserController() {
+fun Route.UserController(useCase: UserUseCase) {
     route("users") {
         get {
-            call.respond(users)
+            call.respond(useCase.read())
         }
         get("{id}") {
             val id = call.parameters["id"]?.toInt()
-            call.respond(users.first { it.id == id })
+            if (id == null) {
+                call.respond(HttpStatusCode.NotFound)
+                return@get
+            }
+            val user = useCase.read(id)
+            if (user == null) {
+                call.respond(HttpStatusCode.NotFound)
+                return@get
+            }
+            return@get call.respond(user)
         }
         post {
-            val user = call.receive<User>()
-            call.respond(user)
+            val name = call.parameters["name"]
+            if (name == null) {
+                call.respond(HttpStatusCode.NotFound)
+                return@post
+            }
+            useCase.create(name)
+            call.respondText { "Created." }
         }
-        delete {
-            val user = call.receive<User>()
-            call.respond(user)
+        delete("{id}") {
+            val id = call.parameters["id"]?.toInt()
+            if (id == null) {
+                call.respond(HttpStatusCode.NotFound)
+                return@delete
+            }
+            useCase.delete(id)
+            call.respondText { "Deleted." }
         }
     }
 }
