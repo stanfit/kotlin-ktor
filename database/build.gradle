@@ -6,4 +6,8 @@ dependencies {
     implementation project(':domain')
     implementation rootProject.ext.kotlinJvm
     implementation rootProject.ext.coroutine
+    implementation rootProject.ext.exposed
+    implementation rootProject.ext.exposedDao
+    implementation rootProject.ext.exposedJdbc
+    implementation rootProject.ext.h2
 }
