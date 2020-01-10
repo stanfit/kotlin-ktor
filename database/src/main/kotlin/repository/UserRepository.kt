@@ -8,10 +8,11 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class UserRepository : UserRepositoryAdapter {
 
-    override fun create(name: String): Unit = transaction {
-        Users.insert {
+    override fun create(name: String): User? = transaction {
+        val id = Users.insertAndGetId {
             it[Users.name] = name
         }
+        read(id.value)
     }
 
     override fun read(): List<User> = transaction {
@@ -25,10 +26,11 @@ class UserRepository : UserRepositoryAdapter {
             .firstOrNull()
     }
 
-    override fun update(id: Int, name: String): Unit = transaction {
+    override fun update(id: Int, name: String): User? = transaction {
         Users.update({ Users.id eq id }) {
             it[Users.name] = name
         }
+        read(id)
     }
 
     override fun delete(id: Int): Unit = transaction {
