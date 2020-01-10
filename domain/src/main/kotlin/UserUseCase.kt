@@ -1,7 +1,7 @@
 class UserUseCase(private val userRepository: UserRepositoryAdapter) {
 
-    fun create(name: String) {
-        userRepository.create(name)
+    fun create(name: String): User? {
+        return userRepository.create(name)
     }
 
     fun read(): List<User> {
@@ -12,8 +12,8 @@ class UserUseCase(private val userRepository: UserRepositoryAdapter) {
         return userRepository.read(id)
     }
 
-    fun update(id: Int, name: String) {
-        userRepository.update(id, name)
+    fun update(id: Int, name: String): User? {
+        return userRepository.update(id, name)
     }
 
     fun delete(id: Int) {
