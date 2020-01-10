@@ -14,6 +14,8 @@
   - Serialization
 - Application
   - Ktor
+- Routing
+  - Location
 - DI
   - Koin
 - DB
