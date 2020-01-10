@@ -1,7 +1,6 @@
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class User(
-    val id: Int,
+data class UserArgs(
     val name: String
 )

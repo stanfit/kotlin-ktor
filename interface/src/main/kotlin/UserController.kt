@@ -1,5 +1,6 @@
 import io.ktor.application.call
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.response.respondText
 import io.ktor.routing.*
@@ -23,12 +24,8 @@ fun Route.UserController(useCase: UserUseCase) {
             return@get call.respond(user)
         }
         post {
-            val name = call.parameters["name"]
-            if (name == null) {
-                call.respond(HttpStatusCode.NotFound)
-                return@post
-            }
-            useCase.create(name)
+            val user = call.receive<UserArgs>()
+            useCase.create(user.name)
             call.respondText { "Created." }
         }
         delete("{id}") {
