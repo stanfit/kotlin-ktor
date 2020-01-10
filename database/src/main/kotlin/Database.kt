@@ -8,7 +8,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 object Database {
 
     fun connect() {
-        Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver")
+        Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver")
     }
 
     fun create() = transaction {
