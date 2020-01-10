@@ -1,3 +1,8 @@
+package usecase
+
+import adapter.UserRepositoryAdapter
+import model.User
+
 class UserUseCase(private val userRepository: UserRepositoryAdapter) {
 
     fun create(name: String): User? {

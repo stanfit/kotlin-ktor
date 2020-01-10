@@ -1,8 +1,8 @@
 package repository
 
-import User
-import UserRepositoryAdapter
+import adapter.UserRepositoryAdapter
 import dao.Users
+import model.User
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.transactions.transaction
 

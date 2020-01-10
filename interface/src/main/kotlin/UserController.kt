@@ -7,6 +7,8 @@ import io.ktor.routing.Route
 import io.ktor.routing.get
 import io.ktor.routing.route
 import kotlinx.serialization.Serializable
+import model.Message
+import usecase.UserUseCase
 
 @UseExperimental(KtorExperimentalLocationsAPI::class)
 fun Route.userController(useCase: UserUseCase) {

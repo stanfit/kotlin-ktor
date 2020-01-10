@@ -12,6 +12,8 @@ import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import kotlinx.serialization.json.Json
 import repository.UserRepository
+import adapter.UserRepositoryAdapter
+import usecase.UserUseCase
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 

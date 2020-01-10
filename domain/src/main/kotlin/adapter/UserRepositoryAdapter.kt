@@ -1,3 +1,7 @@
+package adapter
+
+import model.User
+
 interface UserRepositoryAdapter {
 
     fun create(name: String): User?
