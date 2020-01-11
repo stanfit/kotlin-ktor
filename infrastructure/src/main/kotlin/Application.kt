@@ -3,6 +3,7 @@ import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
+import io.ktor.features.DefaultHeaders
 import io.ktor.http.ContentType
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.locations.Locations
@@ -26,8 +27,14 @@ fun main(args: Array<String>) {
 fun Application.module(testing: Boolean = false) {
     Database.connect()
     Database.create()
-    install(Locations)
     install(CallLogging)
+    install(DefaultHeaders)
+    install(Locations)
+    install(Routing) {
+        val repository: UserRepositoryAdapter = UserRepository()
+        val useCase = UserUseCase(repository)
+        userController(useCase)
+    }
     install(ContentNegotiation) {
         serialization(
             contentType = ContentType.Application.Json,
@@ -37,10 +44,5 @@ fun Application.module(testing: Boolean = false) {
                 )
             )
         )
-    }
-    install(Routing) {
-        val repository: UserRepositoryAdapter = UserRepository()
-        val useCase = UserUseCase(repository)
-        userController(useCase)
     }
 }
