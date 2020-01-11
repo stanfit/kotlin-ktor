@@ -1,4 +1,3 @@
-import adapter.UserRepositoryAdapter
 import io.ktor.application.Application
 import io.ktor.application.install
 import io.ktor.features.CallLogging
@@ -14,8 +13,8 @@ import io.ktor.server.engine.commandLineEnvironment
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 import kotlinx.serialization.json.Json
-import repository.UserRepository
-import usecase.UserUseCase
+import org.koin.ktor.ext.Koin
+import org.koin.ktor.ext.get
 
 fun main(args: Array<String>) {
     embeddedServer(Netty, commandLineEnvironment(args)).start(wait = true)
@@ -30,10 +29,11 @@ fun Application.module(testing: Boolean = false) {
     install(CallLogging)
     install(DefaultHeaders)
     install(Locations)
+    install(Koin) {
+        modules(module)
+    }
     install(Routing) {
-        val repository: UserRepositoryAdapter = UserRepository()
-        val useCase = UserUseCase(repository)
-        userController(useCase)
+        userController(get())
     }
     install(ContentNegotiation) {
         serialization(
